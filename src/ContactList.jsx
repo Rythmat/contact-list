@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const ContactList = () => {
+const ContactList = ({setSelectedContact}) => {
   const [ userData, setUserData] = useState([]);
   
   useEffect(() => {
@@ -9,18 +9,22 @@ const ContactList = () => {
       const jsonArr = await response.json();
       setUserData(jsonArr);
     }
-
     getUser();
   }, []);
 
   
-  console.log(userData);
   return (
     <>
     <ul>
-      {userData.map((user) => {
-        return <li key={user.id}>{user.name}</li>
-      })}
+      {
+      userData.map((user) => {
+        return (
+          <li key={user.id} onClick={() => setSelectedContact(user)} >
+          {user.name}
+          </li>
+        )
+      })
+      }
     </ul>
     </>
   )
