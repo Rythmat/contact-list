@@ -15,6 +15,7 @@ const ContactList = ({setSelectedContact}) => {
   
   return (
     <>
+    <h1>My Favorite Contacts</h1>
     <ul>
       {
       userData.map((user) => {
